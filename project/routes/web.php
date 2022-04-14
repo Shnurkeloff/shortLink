@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\LinkController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,3 +17,6 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('main.main');
 });
+
+Route::post('/link', [LinkController::class, 'createShortLink'])->name('link');
+Route::get('/{code}', [LinkController::class, 'redirectLink'])->name('redirect-link');
